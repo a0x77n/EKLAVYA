@@ -65,7 +65,7 @@ class Model(object):
     @lazy_property
     def probability(self):
         def lstm_cell():
-            if 'reuse' in inspect.getargspec(tf.contrib.rnn.GRUCell.__init__).args:
+            if 'reuse' in inspect.getargspec(tf.nn.rnn_cell.GRUCell.__init__).args:
                 return tf.nn.rnn_cell.GRUCell(self.emb_dim, reuse=tf.get_variable_scope().reuse)
             else:
                 return tf.nn.rnn_cell.GRUCell(self.emb_dim)
